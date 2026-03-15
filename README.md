@@ -1,6 +1,6 @@
 # IDS 568 MLOps - Milestone 4: Distributed & Streaming Pipeline
 
-[![Build Status](https://github.com/kiranmusu14/ids568-milestone4/actions/workflows/python-app.yml/badge.svg)](https://github.com/kiranmusu14/ids568-milestone4/actions)
+[![Build Status](https://github.com/kiranmusu14/ids568-milestone4-kiranmusu14/actions/workflows/python-app.yml/badge.svg)](https://github.com/kiranmusu14/ids568-milestone4-kiranmusu14/actions/workflows/python-app.yml)
 *(Note: Update the badge URL to match your final GitHub Actions workflow path).*
 
 ## Project Overview
