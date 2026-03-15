@@ -15,20 +15,31 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Set up Python 3.9
       uses: actions/setup-python@v3
       with:
         python-version: "3.9"
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
     - name: Lint with flake8
       run: |
         pip install flake8
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-    - name: Test with pytest
+        # Exclude the virtual environment folder to avoid checking library source code
+        flake8 . --count --exclude=mlops_env,venv,env,.venv --select=E9,F63,F7,F82 --show-source --statistics
+        
+    - name: Syntax Check Scripts
       run: |
-        # Optional: Add tests here if you have any
-        python -m py_compile pipeline.py generate_data.py
+        # This ensures your main scripts are at least valid Python code
+        python -m py_compile pipeline.py generate_data.py producer.py consumer.py
+
+    - name: Verify Documentation Presence
+      run: |
+        # Quick check to ensure you haven't deleted the required reports
+        test -f README.md
+        test -f REPORT.md
+        test -f STREAMING_REPORT.md
