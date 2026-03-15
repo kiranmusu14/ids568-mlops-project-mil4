@@ -13,7 +13,7 @@
 *Data supported by Spark UI profiling and terminal execution logs.*
 
 ### Execution Comparison Visualization
-![MLflow Local vs Distributed Comparison](mlflow_runs_comparison.png)
+![MLflow Local vs Distributed Comparison](mlflow_runs.png)
 *Figure 1: MLflow UI tracking and comparing the total runtime and parameters of the single-core local execution versus the 8-core distributed execution.*
 
 
