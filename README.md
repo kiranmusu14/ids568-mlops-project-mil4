@@ -13,8 +13,8 @@ This repository contains a distributed feature engineering pipeline built with P
 * Python 3.9+ 
 * Apache Spark / Java Runtime Environment (JVM 17 recommended)
 
-### Installation
+## Installation
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-username/ids568-milestone4-](https://github.com/your-username/ids568-milestone4-)[your_netid].git
-   cd ids568-milestone4-[your_netid]
+   git clone [https://github.com/kiranmusu14/ids568-milestone4-kiranmusu14.git](https://github.com/kiranmusu14/ids568-milestone4-kiranmusu14.git)
+   cd ids568-milestone4-kiranmusu14
