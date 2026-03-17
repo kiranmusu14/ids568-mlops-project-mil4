@@ -14,7 +14,8 @@
 
 ### Execution Comparison Visualization
 !(mlflow_runs.png)
-*Figure 1: Spark Web UI showing the job execution timeline and task distribution for the 8-core distributed run. The interface confirms successful parallelization across multiple tasks (e.g., 9/9 and 10/10 task completions).*
+*Figure 1: Spark Web UI Job Execution Summary
+The Spark driver interface confirms that the 8-core distributed run successfully partitioned the dataset into multiple parallel tasks. The task distribution (e.g., 10/10 tasks in Job 1 and Job 5) demonstrates high concurrency and optimized throughput for the Parquet writing stages.*
 
 
 *Distributed execution successfully triggered 8 parallel writers. During this run, a MemoryManager warning indicated that total allocation exceeded 95.00% ($1,020,054,720$ bytes) of heap memory. Spark successfully mitigated this by scaling row group sizes, preventing an Out-of-Memory (OOM) error and ensuring pipeline stability*
