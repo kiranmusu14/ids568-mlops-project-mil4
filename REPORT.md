@@ -13,11 +13,11 @@
 *Data supported by Spark UI profiling and terminal execution logs.*
 
 ### Execution Comparison Visualization
-![MLflow Local vs Distributed Comparison](mlflow_runs.png)
-*Figure 1: MLflow UI tracking and comparing the total runtime and parameters of the single-core local execution versus the 8-core distributed execution.*
+!(mlflow_runs.png)
+*Figure 1: Spark Web UI showing the job execution timeline and task distribution for the 8-core distributed run. The interface confirms successful parallelization across multiple tasks (e.g., 9/9 and 10/10 task completions).*
 
 
-*Note: Distributed execution successfully triggered 8 parallel writers. A `MemoryManager` warning indicated that total allocation exceeded 95.00% (1,020,054,720 bytes) of heap memory, successfully scaling row group sizes to prevent an out-of-memory error.*
+*Distributed execution successfully triggered 8 parallel writers. During this run, a MemoryManager warning indicated that total allocation exceeded 95.00% ($1,020,054,720$ bytes) of heap memory. Spark successfully mitigated this by scaling row group sizes, preventing an Out-of-Memory (OOM) error and ensuring pipeline stability*
 
 ## Architecture Analysis & Trade-off Evaluation
 
