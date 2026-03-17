@@ -14,6 +14,7 @@
 
 ### Execution Comparison Visualization
 !(mlflow_runs.png)
+
 *Figure 1: Spark Web UI Job Execution Summary
 The Spark driver interface confirms that the 8-core distributed run successfully partitioned the dataset into multiple parallel tasks. The task distribution (e.g., 10/10 tasks in Job 1 and Job 5) demonstrates high concurrency and optimized throughput for the Parquet writing stages.*
 
