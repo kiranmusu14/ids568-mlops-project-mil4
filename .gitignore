@@ -1,0 +1,28 @@
+# Virtual environments
+mlops_env/
+venv/
+.venv/
+env/
+
+# Data directories
+data/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MLflow
+mlruns/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store

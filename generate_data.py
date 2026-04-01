@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 def generate_synthetic_data(num_rows, output_dir, seed, chunk_size=1000000):
     """Generates synthetic data and saves it in chunked Parquet files for distributed processing."""
-    # Seeded randomness is required so results can be independently verified [cite: 218]
+    # Seeded randomness ensures results can be independently verified
     np.random.seed(seed)
     os.makedirs(output_dir, exist_ok=True)
     
