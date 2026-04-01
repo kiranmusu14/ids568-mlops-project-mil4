@@ -15,6 +15,28 @@ The following table demonstrates the performance of the streaming ingestion pipe
 
 ---
 
+## Queue Depth Monitoring
+
+Queue depth is the number of bytes sitting unread in the OS socket receive buffer at any given moment. It is the earliest warning signal for backpressure — it starts growing before latency spikes and long before a connection drops.
+
+| Load Level | Estimated Queue Depth (steady state) | Queue Behavior | Early Warning Signal |
+| :--- | :--- | :--- | :--- |
+| **Low (100 msg/s)** | Near 0 bytes | Drains instantly; buffer never accumulates | None — system fully keeping up |
+| **Medium (1K msg/s)** | Near 0 bytes | Drains instantly | None |
+| **High (10K msg/s)** | ~50–80 KB (approaching `SO_RCVBUF` limit of ~128 KB on macOS) | Buffer partially fills during bursts, drains between bursts | p99 latency begins to climb (0.02 ms → 0.03 ms); throughput cap at ~78% of target |
+| **Breaking Point (1M msg/s)** | 128 KB (full — buffer saturated) | Buffer fills and stays full; producer's `send()` blocks then fails | Throughput flatlines → `BrokenPipeError` → socket crash |
+
+**How to monitor queue depth on macOS/Linux:**
+```bash
+# Monitor socket receive buffer usage in real time while consumer is running
+watch -n 1 "netstat -an | grep 9999"
+# The Recv-Q column shows bytes waiting to be read by the consumer
+```
+
+A growing `Recv-Q` value that does not drain between windows is the definitive indicator that the consumer is falling behind. In a production system (e.g., Kafka), this maps directly to **consumer lag** — the number of unprocessed messages behind the latest offset — and is the primary metric watched by on-call engineers.
+
+---
+
 ## Failure Handling Analysis
 
 ### 1. Backpressure and Degradation
